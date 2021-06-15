@@ -5,7 +5,7 @@ import pandas as pd
 from copy import copy
 from typing import List
 import numpy as np
-from src.input_establishments import get_establishment_data, get_establishment_genres
+from input_establishments import get_establishment_data, get_establishment_genres
 
 preprocessed_path = "../test/data_preprocessed/data-places-sp-preprocessed.xlsx"
 df_genre_lists = get_establishment_genres()

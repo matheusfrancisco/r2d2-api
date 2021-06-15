@@ -2,11 +2,11 @@ import pandas as pd
 import numpy as np
 import json
 from scipy.spatial.distance import euclidean, pdist, squareform
-from src.pydantic_types import *
+from pydantic_types import *
 
-from src.input_establishments import get_establishment_data
-from src.preprocess_establishments import get_preprocessed_establishments
-# from src.preprocess_user_prefs import get_preprocessed_user_prefs
+from input_establishments import get_establishment_data
+from preprocess_establishments import get_preprocessed_establishments
+# from preprocess_user_prefs import get_preprocessed_user_prefs
 
 
 def similarity_matrix(df: pd.DataFrame) -> pd.DataFrame:
@@ -39,4 +39,4 @@ def suggest_some_rolês(user_id: float, answers: Immediate_user_preferences) -> 
 
 
 if __name__ == "__main__":
-    suggest_some_rolês(None, None)
+    print(suggest_some_rolês(None, None))

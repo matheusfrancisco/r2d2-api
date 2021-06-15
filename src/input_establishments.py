@@ -6,7 +6,7 @@
 
 import pandas as pd
 
-db_path = "./test/data_raw/data-places-sp.xlsm"
+db_path = "../test/data_raw/data-places-sp.xlsm"
 
 
 # gets the establishment data (from local database)

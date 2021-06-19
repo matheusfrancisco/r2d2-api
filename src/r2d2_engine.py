@@ -2,10 +2,10 @@ import pandas as pd
 import numpy as np
 import json
 from scipy.spatial.distance import euclidean, pdist, squareform
-from pydantic_types import *
+from src.pydantic_types import *
 
-from input_establishments import get_establishment_data
-from preprocess_establishments import get_preprocessed_establishments
+from src.input_establishments import get_establishment_data
+from src.preprocess_establishments import get_preprocessed_establishments
 # from preprocess_user_prefs import get_preprocessed_user_prefs
 
 
@@ -27,15 +27,20 @@ def get_ten_most_similar(df_estabs: pd.DataFrame, estab_names: pd.DataFrame, nam
     return most_similar
 
 
-def suggest_some_rolês(user_id: float, answers: Immediate_user_preferences) -> json:
+def suggest_some_rolês(user_id: float, answers: Answers) -> json:
     df_estabs = get_preprocessed_establishments(get_establishment_data())
     estab_names = get_establishment_data()["Nome"]
-    df_user_prefs = None
 
-    df_sim = similarity_matrix(df_estabs)
+    # df_user_prefs = None
+    # df_sim = similarity_matrix(df_estabs)
+
     ten_most_similar = get_ten_most_similar(df_estabs=df_estabs, estab_names=estab_names, name="São Cristóvão Bar e Restaurante")
+    ten_most_similar = ten_most_similar["Nome"].reset_index()
+    ten_most_similar = ten_most_similar.rename({"ID": "top_recommended_ids", "Nome": "top_recommended_names"}, axis=1)
+    ten_most_similar = ten_most_similar.to_dict(orient='list')
+    print(ten_most_similar)
 
-    return ten_most_similar.index
+    return ten_most_similar
 
 
 if __name__ == "__main__":

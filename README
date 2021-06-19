@@ -1,8 +1,8 @@
-# R2-D2 is the resourceful recommendation robot designed to suggest the best rolês in Brazil.
+R2-D2 is the resourceful recommendation robot designed to suggest the best rolês in Brazil.
 
 The R2-D2 recommendation system is based on Content-based Recommendation Systems.
 
-# How to use API:
+How to use API:
 
 Call route [route]/recommendations with POST method, containing:
 user_id (float): ID of user which is using the app,

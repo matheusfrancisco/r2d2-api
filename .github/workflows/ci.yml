@@ -34,20 +34,3 @@ jobs:
       - name: Run test suite
         run: |
           make test
-
-      # This steps are disable until we agree some lint rules
-      #- name: Run linter
-      #  run: |
-      #    pipenv run lint
-      #- name: Run formatting check
-      #  run: |
-      #    pipenv run format --check
-      #- name: Setup node.js (for pyright)
-      #  uses: actions/setup-node@v1
-      #  with:
-      #    node-version: "12"
-
-      #- name: Run type checking
-      #  run: |
-      #    npm install -g pyright
-      #    pipenv run typecheck

@@ -10,7 +10,7 @@ The R2-D2 recommendation system is based on Content-based Recommendation Systems
 # How to use API:
 
 pipenv run python main.py 
-
+```
 Call route [route]/recommendations with POST method, containing:
 user_id (float): ID of user which is using the app,
 answers (dictionary with format {
@@ -18,7 +18,7 @@ answers (dictionary with format {
     like: int,
     number_of_ppl: int
 }): Answers this user provided when starting the app.
-
+```
 
 For more information on how it works, check these sources:
 https://youtu.be/2uxXPzm-7FY

@@ -1,13 +1,15 @@
 # This file will have the necessary code for bringing data from the database to the r2r2 engine
 # Temporarily, it will pull data from a local database (excel sheet)
+#TODO check all type hint in this file
+#TODO write test to all this functions
 
 import pandas as pd
 from copy import copy
 from typing import List
 import numpy as np
-from src.input_establishments import get_establishment_data, get_establishment_genres
+from app.input_establishments import get_establishment_data, get_establishment_genres
 
-preprocessed_path = "./test/data_preprocessed/data-places-sp-preprocessed.xlsx"
+preprocessed_path = "./resources/data_preprocessed/data-places-sp-preprocessed.xlsx"
 df_genre_lists = get_establishment_genres()
 genres = {
     "Gêneros Musicais": df_genre_lists["Gênero Musical: "].dropna(),

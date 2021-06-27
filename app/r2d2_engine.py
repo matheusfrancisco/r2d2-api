@@ -2,12 +2,13 @@ import pandas as pd
 import numpy as np
 import json
 from scipy.spatial.distance import euclidean, pdist, squareform
-from src.pydantic_types import *
+from app.pydantic_types import *
 
-from src.input_establishments import get_establishment_data
-from src.preprocess_establishments import get_preprocessed_establishments
+from app.input_establishments import get_establishment_data
+from app.preprocess_establishments import get_preprocessed_establishments
 # from preprocess_user_prefs import get_preprocessed_user_prefs
-
+#TODO check all type hint in this file
+#TODO write test to all this functions
 
 def similarity_matrix(df: pd.DataFrame) -> pd.DataFrame:
     dists = pdist(df, metric='euclidean')
@@ -27,7 +28,7 @@ def get_ten_most_similar(df_estabs: pd.DataFrame, estab_names: pd.DataFrame, nam
     return most_similar
 
 
-def suggest_some_rolês(user_id: float, answers: Answers) -> json:
+def suggest_some_rolês(user_id: float, answers: Answers) -> dict:
     df_estabs = get_preprocessed_establishments(get_establishment_data())
     estab_names = get_establishment_data()["Nome"]
 

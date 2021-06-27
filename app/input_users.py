@@ -2,10 +2,11 @@
 # Temporarily, it will pull data from a local database (excel sheet)
 
 # This file must output a pandas dataframe containing all the user preferences.
+#TODO check all type hint in this file
 
 import pandas as pd
 
-db_path = "./test/data_raw/data-user-preferences.xlsm"
+db_path = "./resources/data_raw/data-user-preferences.xlsm"
 
 # gets the user preference data (from local database)
 def get_user_preference_data(user_id: float) -> pd.DataFrame:

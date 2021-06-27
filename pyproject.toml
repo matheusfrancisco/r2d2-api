@@ -1,0 +1,28 @@
+[tool.black]
+target_version = ["py38"]
+
+[tool.coverage.report]
+skip_empty = true
+show_missing = true
+fail_under = 50 # keep a high bar! here I put oure coverage bar into 50% because we have 53% now and if this number increase means that
+# we are adding code without write test
+
+[tool.coverage.run]
+branch = true
+
+[tool.isort]
+profile = "black"
+src_paths = ["app", "tests"]
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = [
+    "--quiet",
+    "--black",
+    "--flake8",
+    "--isort",
+    #"--mypy", #if we are using type we should ensure that we are typing correctly
+    "--cov=app",
+    "--cov=tests",
+    "--durations=3",
+]

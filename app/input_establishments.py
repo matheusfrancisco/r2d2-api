@@ -6,11 +6,11 @@
 
 import pandas as pd
 
-db_path = "./resources/data_raw/data-places-sp.xlsm"
 
 
 # gets the establishment data (from local database)
 def get_establishment_data() -> pd.DataFrame:
+    db_path = "./resources/data_raw/data-places-sp.xlsm"
     df_estab = pd.read_excel(db_path, index_col=0, sheet_name="Estabelecimentos")
 
     return df_estab
@@ -18,6 +18,7 @@ def get_establishment_data() -> pd.DataFrame:
 
 # gets list of all the possible genres
 def get_establishment_genres() -> pd.DataFrame:
+    db_path = "./resources/data_raw/data-places-sp.xlsm"
     df_genres = pd.read_excel(db_path, sheet_name="Listas")
 
     return df_genres

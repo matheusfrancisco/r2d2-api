@@ -5,24 +5,25 @@
 
 import pandas as pd
 from copy import copy
-from typing import List
+from typing import List, Dict
 import numpy as np
 from app.input_establishments import get_establishment_data, get_establishment_genres
 
-preprocessed_path = "./resources/data_preprocessed/data-places-sp-preprocessed.xlsx"
-df_genre_lists = get_establishment_genres()
-genres = {
-    "Gêneros Musicais": df_genre_lists["Gênero Musical: "].dropna(),
-    "Gêneros Gastronômicos": df_genre_lists["Gênero Gastronomico:"].dropna(),
-    "Genêro de bebidas": df_genre_lists["Gênero de Bebidas:"].dropna(),
-    "Gênero de Afinidade": df_genre_lists["Gênero de Afinidade:"].dropna(),
-    "Gênero de Atividades": df_genre_lists["Gênero de Atividade:"].dropna(),
-}
-
+def get_genres() -> Dict:
+    df_genre_lists = get_establishment_genres()
+    genres = {
+        "Gêneros Musicais": df_genre_lists["Gênero Musical: "].dropna(),
+        "Gêneros Gastronômicos": df_genre_lists["Gênero Gastronomico:"].dropna(),
+        "Genêro de bebidas": df_genre_lists["Gênero de Bebidas:"].dropna(),
+        "Gênero de Afinidade": df_genre_lists["Gênero de Afinidade:"].dropna(),
+        "Gênero de Atividades": df_genre_lists["Gênero de Atividade:"].dropna(),
+    }
+    return genres
 
 # Encodes a list of strings containing Music, drink and food genres
 # into a multi-hot vector
 def encode_genre(genre_list: pd.Series, genre_type: str) -> List[np.array]:
+    genres = get_genres()
     genre_items = list(genres[genre_type])
     all_encoded_genres = []
     # for each string containing the genres of an establishment, separate it into a list
@@ -63,6 +64,7 @@ def get_preprocessed_establishments(df: pd.DataFrame):
     ignore_columns = ["Endereço", "Horário de funcionamento", "Descrição"]
     df = df.drop(columns=ignore_columns)
 
+    genres = get_genres()
     df = add_genre_list(df=df, genres=genres)
     df = df.drop([key for key, value in genres.items()], axis=1)
     df = df.drop(df[df["Avaliação"] == '-'].index, axis=0)
@@ -72,5 +74,6 @@ def get_preprocessed_establishments(df: pd.DataFrame):
 
 
 if __name__ == "__main__":
+    preprocessed_path = "./resources/data_preprocessed/data-places-sp-preprocessed.xlsx"
     df_test = get_establishment_data()
     get_preprocessed_establishments(df_test).to_excel(preprocessed_path, index=False)

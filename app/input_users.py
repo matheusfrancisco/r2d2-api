@@ -6,10 +6,10 @@
 
 import pandas as pd
 
-db_path = "./resources/data_raw/data-user-preferences.xlsm"
 
 # gets the user preference data (from local database)
 def get_user_preference_data(user_id: float) -> pd.DataFrame:
+    db_path = "./resources/data_raw/data-user-preferences.xlsm"
     df = pd.read_excel(db_path, index_col=0)
     df_user_prefs = df.loc[user_id]
 

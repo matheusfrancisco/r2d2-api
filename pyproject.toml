@@ -4,7 +4,7 @@ target_version = ["py38"]
 [tool.coverage.report]
 skip_empty = true
 show_missing = true
-fail_under = 40 # keep a high bar! here I put oure coverage bar into 50% because we have 53% now and if this number increase means that
+fail_under = 10 # keep a high bar! here I put oure coverage bar into 50% because we have 53% now and if this number increase means that
 # we are adding code without write test
 
 [tool.coverage.run]

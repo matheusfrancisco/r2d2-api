@@ -1,10 +1,8 @@
 from app.r2d2_engine import suggest_some_rolês
-from app.pydantic_types import *
+from app.models import *
 from app.config import settings
-from app.models import HealthCheck
 
-from fastapi import FastAPI
-import json
+from fastapi import FastAPI, Body
 
 app = FastAPI(title=settings.PROJECT_NAME, debug=settings.DEBUG)
 
@@ -19,6 +17,9 @@ def run_health_check():
 #TODO: fix user_id and answers input
 #TODO  write test to this endpoint
 @app.post("/recommendations/{user_id}", response_model=Recommendations)
-def recommendations(answers: Answers, user_id: int):
+def recommendations(user_id: int, answers: Answers):
     rolês = suggest_some_rolês(answers=answers, user_id=user_id)
+    rolês = {
+        "top_recommended_ids": rolês
+    }
     return rolês

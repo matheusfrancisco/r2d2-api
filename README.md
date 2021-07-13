@@ -11,13 +11,18 @@ The R2-D2 recommendation system is based on Content-based Recommendation Systems
 
 pipenv run python main.py 
 ```
-Call route [route]/recommendations with POST method, containing:
+Call api by using [route]/recommendations/user_id  with POST method, containing:
 user_id (float): ID of user which is using the app,
-answers (dictionary with format {
+answers (dict): Answers this user provided when starting the app. Format:
+{
     how_much: int,
     like: int,
     number_of_ppl: int
-}): Answers this user provided when starting the app.
+}
+
+The API will return a dictionary containing a list of strings, that represent the
+ID's of the top 10 establishment recommendations for the user.
+ 
 ```
 
 For more information on how it works, check these sources:

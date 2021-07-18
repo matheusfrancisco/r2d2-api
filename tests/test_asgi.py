@@ -1,6 +1,6 @@
 from mangum import Mangum
 
-from app.asgi import handler
+from app.api import handler
 
 
 def test_handler():

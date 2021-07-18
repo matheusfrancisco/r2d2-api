@@ -9,6 +9,7 @@ fastapi = "*"
 pandas = "1.3.0"
 scipy = "*"
 openpyxl = "*"
+boto3 = "*"
 
 [dev-packages]
 uvicorn = "*"

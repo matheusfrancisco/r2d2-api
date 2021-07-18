@@ -2,9 +2,11 @@ from app.r2d2_engine import suggest_some_rolês
 from app.models import *
 from app.config import settings
 
+from mangum import Mangum
 from fastapi import FastAPI, Body
 
 app = FastAPI(title=settings.PROJECT_NAME, debug=settings.DEBUG)
+handler = Mangum(app)
 
 @app.get("/")
 def read_root():
@@ -23,3 +25,4 @@ def recommendations(user_id: int, answers: Answers):
         "top_recommended_ids": rolês
     }
     return rolês
+

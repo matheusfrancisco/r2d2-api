@@ -49,7 +49,7 @@ package:
 
 functions:
   app:
-    handler: app.asgi.handler
+    handler: app.api.handler
     events:
       - httpApi:
           method: '*'

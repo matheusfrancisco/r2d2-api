@@ -38,4 +38,4 @@ jobs:
           pipenv install --dev --verbose
       - name: Run test suite
         run: |
-          make test
+          pipenv run pytest tests/

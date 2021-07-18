@@ -32,6 +32,7 @@ jobs:
         if: steps.cache-pipenv.outputs.cache-hit != 'true'
         run: |
           pipenv install --dev
+          pipenv install
       - name: Run test suite
         run: |
           make test

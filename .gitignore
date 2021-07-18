@@ -1,6 +1,7 @@
 __pycache__/
 
 
+.requirements*
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

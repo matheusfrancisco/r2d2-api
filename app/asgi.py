@@ -1,4 +1,3 @@
-
 """
 ASGI wrapper for AWS API Gateway integration,
 using https://mangum.io

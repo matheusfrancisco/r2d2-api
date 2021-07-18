@@ -19,12 +19,17 @@ provider:
   environment:
     PROJECT_NAME: ${env:PROJECT_NAME}
 
+
 package:
+  individually: true
   exclude:
     # Remove any non-essential files from the deployment package
     - .direnv/**
     - .editorconfig
     - .env*
+    - node_modules/**
+    - requirement*
+    - package*
     - venv/**
     - .idea/**
     - .vscode/**
@@ -32,9 +37,10 @@ package:
     - Pipfile*
     - requirements.txt
     - setup.cfg
+    - resources/*
     - pyproject.toml
-    - node_modules/**
     - .mypy_cache/**
+    - __pycache__/*
     - .pytest_cache/**
     - .coverage
     - htmlcov/**
@@ -55,6 +61,8 @@ plugins:
   - serverless-python-requirements
 custom:
   pythonRequirements:
+    dockerizePip: non-linux
+    zip: true
     # Use Docker to compile any C extensions for AWS Lambda platform.
     # `pydantic` will Cython-compile for a speed boost at the expense of larger
     # deployment package: ~12 MB vs ~600 KB

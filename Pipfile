@@ -4,14 +4,14 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-fastapi = "*"
 mangum = "*"
-pandas = "*"
+fastapi = "*"
+pandas = "1.3.0"
 scipy = "*"
 openpyxl = "*"
-uvicorn = "*"
 
 [dev-packages]
+uvicorn = "*"
 pytest = "*"
 pytest-black = "*"
 pytest-cov = "*"

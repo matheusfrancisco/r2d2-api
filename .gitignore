@@ -1,5 +1,7 @@
 __pycache__/
 
+resources/
+test/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

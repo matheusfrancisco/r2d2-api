@@ -30,13 +30,6 @@ https://youtu.be/2uxXPzm-7FY
 https://link.springer.com/chapter/10.1007/978-0-387-85820-3_3
 
 
-## Dependencies
-
-### Install
-* python 3.8
-* FastApi
-* Python packages installed via `pipenv install`
-
 ## How deploy api
 `npm install`
 
@@ -53,32 +46,5 @@ aws_secret_access_key=SECRETE_ACCESS_KEY
 
 ## Development Dependencias
 
-* Python packages `pipenv install --dev`
-
-## Folder Structure
-
-
-
-/app
- - api.py
- - asg.py
- - config.py
- - models.py
-
-/tests
- - test_api.py
- - test_asgi.py
- - test_models.py
-
-main.py
-
-
-* models.py: At this file contains our pydantic models
-* asg.py: ASGI wrapper for AWS API Gateway integration,
-* config.py: Env config
-* api.py: Http entrypoint
-
-* tests/test_api.py: How test http calls
-* tests/asgi.py: How tests our asgi
-* tests/models.py How test pure models or logic
+* Python packages `pip install -r requirements.txt`
 

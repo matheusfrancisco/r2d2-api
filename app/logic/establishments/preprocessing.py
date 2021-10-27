@@ -8,12 +8,11 @@ from copy import copy
 from typing import List
 import numpy as np
 from collections import defaultdict
-from app.input_establishments import get_establishments, get_establishment_categories
+from app.adapters.input.establishments import get_establishments, get_establishment_categories
 
 
 def get_preprocessed_establishments() -> pd.DataFrame:
     df = get_establishments()
-
     return df
 
 
@@ -26,5 +25,5 @@ def get_preprocessed_establisment_categories() -> pd.DataFrame:
     return categories
 
 
-if __name__ == "__main__":
-    print(get_preprocessed_establisment_categories())
+#if __name__ == "__main__":
+#    print(get_preprocessed_establisment_categories())

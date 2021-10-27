@@ -1,8 +1,7 @@
-frameworkVersion: '2'
-
-service: r2d2
+service: recommendation-api
 
 # Load environment variables from .env* files
+# https://www.serverless.com/framework/docs/environment-variables/
 useDotenv: true
 
 provider:
@@ -16,8 +15,14 @@ provider:
     httpApi: true
   # Prevent costs from ever-increasing
   logRetentionInDays: 14
+  # Values exist in compiled artifacts in S3.
+  # https://www.serverless.com/framework/docs/providers/aws/guide/variables
   environment:
+    # ${env:*} variables are injected from the build-time environment.
     PROJECT_NAME: ${env:PROJECT_NAME}
+    API_KEY: ${env:API_KEY}
+    BASE_ID: ${env:BASE_ID}
+    DEBUG: ${env:PROJECT_NAME}
 
 package:
   exclude:
@@ -30,6 +35,7 @@ package:
     - .vscode/**
     - package*.json
     - Pipfile*
+    - resources/*
     - requirements.txt
     - setup.cfg
     - pyproject.toml

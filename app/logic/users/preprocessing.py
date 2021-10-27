@@ -1,5 +1,5 @@
 import pandas as pd
-from app.input_user_prefs import get_user_preference_data, get_preference_categories
+from app.adapters.input.users import get_user_preference_data, get_preference_categories
 
 
 def get_preprocessed_user_prefs(user_id: int) -> pd.DataFrame:

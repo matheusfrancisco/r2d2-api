@@ -2,14 +2,14 @@ import pandas as pd
 import numpy as np
 import json
 from scipy.spatial.distance import euclidean, pdist, squareform
-from app.models import *
+from app.models.models import *
 
-from app.preprocess_user_prefs import get_preprocessed_user_prefs
-from app.preprocess_establishments import get_preprocessed_establishments, get_preprocessed_establisment_categories
+from app.logic.users.preprocessing import get_preprocessed_user_prefs
+from app.logic.establishments.preprocessing import get_preprocessed_establishments, get_preprocessed_establisment_categories
 
-#TODO check all type hint in this file
+#these functions have type hints, check all of them
+
 #TODO write test to all this functions
-
 # get the similarity matrix between the user vector and all the establishments
 def similarity_matrix(df: pd.DataFrame) -> pd.DataFrame:
     # dists = pdist(df, metric='euclidean')
@@ -56,12 +56,11 @@ def get_user_vector(df_user_prefs: pd.DataFrame, df_estabs: pd.DataFrame, estab_
         user_vectors = user_vectors.append(all_ratings_vector)      # appends this user vector (one rating from this user) to a dataframe with all user vectors
 
     user_vector = user_vectors.mean(axis=0).round(3)    # takes average of all user rating vectors to get the final user vector
-    
     return user_vector
 
 
 # get the establishment recommendations given a user ordered by relevance (descending)
-def suggest_some_rolês(user_id: float, answers: Answers) -> List[str]:
+def recommendations(user_id: float, answers: Answers) -> List[str]:
     # TODO: implement the user answer in the recommendation engine
 
     df_estabs = get_preprocessed_establishments()
@@ -77,6 +76,3 @@ def suggest_some_rolês(user_id: float, answers: Answers) -> List[str]:
 
     return ten_most_similar
 
-
-if __name__ == "__main__":
-    print(suggest_some_rolês(123, None))

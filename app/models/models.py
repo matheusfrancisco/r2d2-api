@@ -1,3 +1,7 @@
+try:
+    import unzip_requirements
+except ImportError:
+    Exception("there was a problem with imports")
 """
 DEPRECATED FILE
 it will be refactor

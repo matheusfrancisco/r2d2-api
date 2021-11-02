@@ -1,4 +1,11 @@
+try:
+    import unzip_requirements
+except ImportError:
+    Exception("there was a problem with imports")
+
+
 from fastapi import FastAPI
+from mangum import Mangum
 
 from app.config import settings
 from app.models.establishment import establishments
@@ -8,11 +15,12 @@ from app.logic.engine import recommendations
 
 
 app = FastAPI(title=settings.PROJECT_NAME, debug=settings.DEBUG)
+handler = Mangum(app)
 
 
 @app.get("/alive")
 def run_health_check():
-    return {'ok':'ok'}
+    return {'status': 200, 'version': '0.1'}
 
 
 @app.get("/establishments")

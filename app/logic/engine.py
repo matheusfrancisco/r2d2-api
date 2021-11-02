@@ -1,3 +1,7 @@
+try:
+    import unzip_requirements
+except ImportError:
+    Exception("there was a problem with imports")
 import pandas as pd
 import numpy as np
 import json

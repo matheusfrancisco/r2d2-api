@@ -1,3 +1,8 @@
+try:
+    import unzip_requirements
+except ImportError:
+    Exception("there was a problem with imports")
+
 from pydantic import BaseSettings
 
 

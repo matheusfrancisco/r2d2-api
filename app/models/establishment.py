@@ -1,3 +1,7 @@
+try:
+    import unzip_requirements
+except ImportError:
+    Exception("there was a problem with imports")
 from pyairtable import Table
 from app.config import settings
 # pyairtable has an orm but for instance is to overengineer

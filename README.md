@@ -3,27 +3,10 @@
 ## Description
 
 R2-D2 is the resourceful recommendation robot designed to suggest the best rolês in Brazil.
-
-
 The R2-D2 recommendation system is based on Content-based Recommendation Systems.
 
 # How to use API:
-
-pipenv run python main.py 
-```
-Call api by using [route]/recommendations/user_id  with POST method, containing:
-user_id (float): ID of user which is using the app,
-answers (dict): Answers this user provided when starting the app. Format:
-{
-    how_much: int,
-    like: int,
-    number_of_ppl: int
-}
-
-The API will return a dictionary containing a list of strings, that represent the
-ID's of the top 10 establishment recommendations for the user.
- 
-```
+TODO needs to write
 
 For more information on how it works, check these sources:
 https://youtu.be/2uxXPzm-7FY
@@ -44,7 +27,18 @@ aws_secret_access_key=SECRETE_ACCESS_KEY
 * serverless command line`serverless deploy`
 * serverless plugin from package.json
 
-## Development Dependencias
+##  Run locally
 
+* Active you virtualenv or not..
+* Install the dependencies
 * Python packages `pip install -r requirements.txt`
 
+
+Run locally as fastapi server
+
+```bash
+pip install -r requirements.txt
+python main.py
+```
+
+Run locally as serverless-offline

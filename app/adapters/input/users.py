@@ -1,3 +1,7 @@
+try:
+    import unzip_requirements
+except ImportError:
+    Exception("there was a problem with imports")
 # This file will have the necessary code for bringing data from the database to the r2r2 engine
 # Temporarily, it will pull data from a local database (excel sheet)
 

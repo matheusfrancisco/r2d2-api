@@ -20,7 +20,7 @@ provider:
     BASE_ID: ${env:BASE_ID}
     DEBUG: ${env:DEBUG}
   memorySize: 1024
-  timeout: 30
+  timeout: 28
 
 package:
   exclude:

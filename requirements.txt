@@ -4,6 +4,7 @@ starlette==0.16.0
 uvicorn==0.15.0
 pyairtable
 python-decouple
+python-dotenv
 pandas
 scipy
 openpyxl

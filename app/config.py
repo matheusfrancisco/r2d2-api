@@ -8,13 +8,13 @@ from pydantic import BaseSettings
 
 
 class Settings(BaseSettings):
-    PROJECT_NAME: str
+    PROJECT_NAME: str = 'R2D2'
     DEBUG: bool = False
-    API_KEY: str
-    BASE_ID: str 
+    API_KEY: str = 'Mock'
+    BASE_ID: str = 'Moc'
 
     class Config:
-        env_file = f"{os.environ['ENVFILE']}"
+        env_file = ".env"
 
 
 settings = Settings()

@@ -37,7 +37,7 @@ Run locally as fastapi server
 
 ```bash
 pip install -r requirements.txt
-python main.py
+export ENVFILE=.env && python main.py
 ```
 
 Run locally as serverless-offline

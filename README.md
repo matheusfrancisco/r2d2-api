@@ -1,7 +1,6 @@
-# R2D2 Recommendation Api Engine
+# R2D2 Recommendation Api Engine V0.1
 
 ## Description
-
 R2-D2 is the resourceful recommendation robot designed to suggest the best rolês in Brazil.
 The R2-D2 recommendation system is based on Content-based Recommendation Systems.
 

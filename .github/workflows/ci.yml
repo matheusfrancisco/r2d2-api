@@ -1,4 +1,4 @@
-name: R2D2 CI
+name: R2D2 CI and CD
 on:
   pull_request:
   push:
@@ -23,6 +23,28 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements-dev.txt
-      # - name: Run test suite
-      #   run: |
-      #    make test
+      - name: Run test suite
+        run: |
+          make test
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install serverless
+        run: |
+          npm install
+      - name: Install AWS CLI
+        uses: unfor19/install-aws-cli-action@v1
+        with:
+          version: 1
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+          PROJECT_NAME: R2D2
+      - name: Install requirements
+        run: |
+          pip install -r requirements.txt
+      - name: Deploy
+        run: |
+          npm run deploy

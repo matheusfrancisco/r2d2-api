@@ -1,0 +1,4 @@
+PROJECT_NAME=recommendation_api
+API_KEY=mock
+DEBUG=False
+BASE_ID=mock

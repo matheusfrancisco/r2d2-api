@@ -8,35 +8,31 @@ provider:
   name: aws
   runtime: python3.8
   deploymentBucket:
-    # Prevent future unintentional S3 Bucket leaks
     blockPublicAccess: true
   lambdaHashingVersion: 20201221
   logs:
     httpApi: true
-  # Prevent costs from ever-increasing
   logRetentionInDays: 14
-  # Values exist in compiled artifacts in S3.
-  # https://www.serverless.com/framework/docs/providers/aws/guide/variables
   environment:
     # ${env:*} variables are injected from the build-time environment.
     PROJECT_NAME: ${env:PROJECT_NAME}
     API_KEY: ${env:API_KEY}
     BASE_ID: ${env:BASE_ID}
-    DEBUG: ${env:PROJECT_NAME}
+    DEBUG: ${env:DEBUG}
+  memorySize: 1024
+  timeout: 28
 
 package:
   exclude:
     # Remove any non-essential files from the deployment package
     - .direnv/**
     - .editorconfig
-    - .env*
     - venv/**
     - .idea/**
     - .vscode/**
     - package*.json
     - Pipfile*
     - resources/*
-    - requirements.txt
     - setup.cfg
     - pyproject.toml
     - node_modules/**
@@ -46,10 +42,13 @@ package:
     - htmlcov/**
     - main.py
     - tests/**
+    - src/adapters
+    - src/logic
+    - src/models
 
 functions:
   app:
-    handler: app.asgi.handler
+    handler: app.api.handler
     events:
       - httpApi:
           method: '*'
@@ -61,11 +60,7 @@ plugins:
   - serverless-python-requirements
 custom:
   pythonRequirements:
-    # Use Docker to compile any C extensions for AWS Lambda platform.
-    # `pydantic` will Cython-compile for a speed boost at the expense of larger
-    # deployment package: ~12 MB vs ~600 KB
-    # dockerizePip: non-linux
+    dockerizePip: non-linux
+    zip: true
   serverless-offline:
-    # Remove the API Gateway REST API `/dev` stage prefix.
-    # https://github.com/dherault/serverless-offline/issues/1118
     noPrependStageInUrl: true

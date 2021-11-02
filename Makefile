@@ -11,4 +11,4 @@ clean-pyc: ## Remove Python file artifacts
 
 .PHONY: test
 test:  ## Run test suite
-	@pytest tests/
+	export ENVFILE=.envtest &&  pytest tests/
